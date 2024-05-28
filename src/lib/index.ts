@@ -8,9 +8,9 @@ export const getUser = cache(async () => {
     const session = await getSession();
     const userId = session.data.userId;
     if (userId === undefined) throw new Error("User not found");
-    const user = await db.user.findUnique({ where: { id: userId } });
-    if (!user) throw new Error("User not found");
-    return { id: user.id, username: user.username };
+    // const user = await db.user.findUnique({ where: { id: userId } });
+    // if (!user) throw new Error("User not found");
+    // return { id: user.id, username: user.username };
   } catch {
     await logoutSession();
     throw redirect("/login");
