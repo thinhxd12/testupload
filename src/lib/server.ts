@@ -1,5 +1,4 @@
-// import { useSession } from "vinxi/http";
-import { useSession } from "vinxi/server";
+import { useSession } from "vinxi/http";
 import { db } from "./db";
 import { getRequestEvent } from "solid-js/web";
 
@@ -40,7 +39,7 @@ export async function register(username: string, password: string) {
 }
 
 export function getSession() {
-  return useSession(event!.nativeEvent, {
+  return useSession( {
     password: process.env.SESSION_SECRET ?? "areallylongsecretthatyoushouldreplace"
   });
 }
