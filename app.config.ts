@@ -8,6 +8,9 @@ export default defineConfig({
     //     preset: "netlify-edge"
     // }
     server: {
-        preset: "cloudflare-pages",
+        prerender: {
+            crawlLinks: true
+        },
+        preset: "vercel",
     }
 });
