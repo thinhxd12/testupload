@@ -1,6 +1,9 @@
 // import { useSession } from "vinxi/http";
 import { useSession } from "vinxi/server";
 import { db } from "./db";
+import { getRequestEvent } from "solid-js/web";
+
+const event = getRequestEvent();
 
 export function validateUsername(username: unknown) {
   if (typeof username !== "string" || username.length < 3) {
@@ -37,7 +40,7 @@ export async function register(username: string, password: string) {
 }
 
 export function getSession() {
-  return useSession({
+  return useSession(event!.nativeEvent, {
     password: process.env.SESSION_SECRET ?? "areallylongsecretthatyoushouldreplace"
   });
 }
