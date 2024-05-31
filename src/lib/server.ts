@@ -17,7 +17,9 @@ export async function login(username: string, password: string) {
   // const user = await db.user.findUnique({ where: { username } });
   // if (!user || password !== user.password) throw new Error("Invalid login");
   // return user;
-  return { id: 1, username: 'abc', password: '123', }
+  return {
+    id: 1, username: "user"
+  }
 }
 
 export async function logout() {

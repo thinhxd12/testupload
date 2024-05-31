@@ -10,7 +10,7 @@ export const getUser = cache(async () => {
     if (userId === undefined) throw new Error("User not found");
     // const user = await db.user.findUnique({ where: { id: userId } });
     // if (!user) throw new Error("User not found");
-    // return { id: user.id, username: user.username };
+    return { id: 1, username: 'user' };
   } catch {
     await logoutSession();
     throw redirect("/login");
