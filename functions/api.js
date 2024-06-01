@@ -31,6 +31,14 @@ app.get('/api/hear', async (req, res) => {
     gtts.stream().pipe(res);
 })
 
+const cors = require('cors');
+
+app.use(cors({
+    credentials: true,
+    preflightContinue: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH' , 'DELETE', 'OPTIONS'],
+    origin: true
+}));
 
 const handler = ServerlessHttp(app);
 
@@ -38,3 +46,4 @@ module.exports.handler = async (event, context) => {
     const result = await handler(event, context);
     return result;
 }
+
