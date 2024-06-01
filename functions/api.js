@@ -7,7 +7,7 @@ import cors from 'cors';
 const app = express();
 
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://hoctuvung3.vercel.app/'],
+    origin: ['http://localhost:3000', 'https://hoctuvung3.vercel.app'],
     optionsSuccessStatus: 200
 }
 
@@ -34,7 +34,7 @@ app.get('/api/trans', cors(corsOptions), async (req, res) => {
 
 app.get('/api/hear', cors(corsOptions), async (req, res) => {
     const gtts = new Gtts(req.query.text, req.query.lang);
-    gtts.stream().pipe(res);
+    return gtts.stream().pipe(res);
 })
 
 
