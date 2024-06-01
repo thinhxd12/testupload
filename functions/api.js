@@ -1,8 +1,8 @@
 import express from "express";
 import ServerlessHttp from "serverless-http";
-import Gtts from "gtts"
 import translate from "google-translate-extended-api"
 import cors from 'cors';
+const Gtts = require('gtts'); 
 
 const app = express();
 
