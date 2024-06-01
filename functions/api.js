@@ -6,27 +6,16 @@ import Gtts from "gtts"
 import translate from "google-translate-extended-api"
 
 const app = express();
-// const cors = require('cors');
-// const Gtts = require('gtts');
 
 const corsOptions = {
     origin: ['http://localhost:3000', 'https://hoctuvung3.vercel.app/'],
     optionsSuccessStatus: 200
 }
 
-
-
-// app.get('/.netlify/functions/api', (req, res) => {
-//     return res.json({
-//         messages: "hello world!"
-//     })
-// })
-
-app.get('/api/wakeup', (req, res) => {
+app.get('/api/wakeup', cors(corsOptions), (req, res) => {
     res.json({ res: 'it worked!' });
 })
 
-// const translate = require('google-translate-extended-api');
 const defaultTransOptions = {
     returnRawResponse: false,
     detailedTranslations: true,
@@ -38,34 +27,11 @@ const defaultTransOptions = {
     removeStyles: false
 }
 
-const getExampleTransOptions = {
-    returnRawResponse: false,
-    detailedTranslations: false,
-    definitionSynonyms: false,
-    detailedTranslationsSynonyms: false,
-    definitions: false,
-    definitionExamples: false,
-    examples: true,
-    removeStyles: false
-}
-
-// app.get('/trans', cors(corsOptions), async (req, res) => {
-//     const { text, from, to } = req.query;
-
-//     const result = await translate(text, from, to, defaultTransOptions);
-//     return res.json(result)
-// });
-
 app.get('/api/trans', async (req, res) => {
     const { text, from, to } = req.query;
     const result = await translate(text, from, to, defaultTransOptions);
     return res.json(result)
 })
-
-// app.get('/hear', cors(corsOptions), function (req, res) {
-//     const gtts = new Gtts(req.query.text, req.query.lang);
-//     gtts.stream().pipe(res);
-// });
 
 app.get('/api/hear', async (req, res) => {
     const gtts = new Gtts(req.query.text, req.query.lang);
