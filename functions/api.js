@@ -22,6 +22,9 @@ const corsOptions = {
 //     })
 // })
 
+app.get('/api/wakeup', (req, res) => {
+    res.json({ res: 'it worked!' });
+})
 
 // const translate = require('google-translate-extended-api');
 const defaultTransOptions = {
