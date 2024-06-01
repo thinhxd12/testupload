@@ -49,21 +49,28 @@ const getExampleTransOptions = {
     removeStyles: false
 }
 
-app.get('/trans', cors(corsOptions), async (req, res) => {
-    const { text, from, to } = req.query;
+// app.get('/trans', cors(corsOptions), async (req, res) => {
+//     const { text, from, to } = req.query;
 
+//     const result = await translate(text, from, to, defaultTransOptions);
+//     return res.json(result)
+// });
+
+app.get('/api/trans', async (req, res) => {
+    const { text, from, to } = req.query;
     const result = await translate(text, from, to, defaultTransOptions);
     return res.json(result)
-});
+})
 
-app.get('/hear', cors(corsOptions), function (req, res) {
+// app.get('/hear', cors(corsOptions), function (req, res) {
+//     const gtts = new Gtts(req.query.text, req.query.lang);
+//     gtts.stream().pipe(res);
+// });
+
+app.get('/api/hear', async (req, res) => {
     const gtts = new Gtts(req.query.text, req.query.lang);
     gtts.stream().pipe(res);
-});
-
-app.get('/wakeup', function (req, res) {
-    res.json({ res: 'it worked!' });
-});
+})
 
 
 const handler = ServerlessHttp(app);
