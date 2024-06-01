@@ -1,9 +1,13 @@
 import express from "express";
 import ServerlessHttp from "serverless-http";
 
+import cors from "cors"
+import Gtts from "gtts"
+import translate from "google-translate-extended-api"
+
 const app = express();
-const cors = require('cors');
-const Gtts = require('gtts');
+// const cors = require('cors');
+// const Gtts = require('gtts');
 
 const corsOptions = {
     origin: ['http://localhost:3000', 'https://hoctuvung3.vercel.app/'],
@@ -19,7 +23,7 @@ app.get('/.netlify/functions/api', (req, res) => {
 })
 
 
-const translate = require('google-translate-extended-api');
+// const translate = require('google-translate-extended-api');
 const defaultTransOptions = {
     returnRawResponse: false,
     detailedTranslations: true,
@@ -54,7 +58,7 @@ app.get('/hear', cors(corsOptions), function (req, res) {
     gtts.stream().pipe(res);
 });
 
-app.get('/wakeup', cors(corsOptions), function (req, res) {
+app.get('/wakeup', function (req, res) {
     res.json({ res: 'it worked!' });
 });
 
