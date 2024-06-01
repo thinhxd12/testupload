@@ -31,12 +31,12 @@ app.get('/api/hear', async (req, res) => {
     gtts.stream().pipe(res);
 })
 
-const cors = require('cors');
+import cors from 'cors';
 
 app.use(cors({
     credentials: true,
     preflightContinue: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH' , 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     origin: true
 }));
 
