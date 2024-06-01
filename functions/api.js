@@ -1,8 +1,8 @@
-import express from "express";
-import ServerlessHttp from "serverless-http";
-import translate from "google-translate-extended-api"
-import cors from 'cors';
-import Gtts from '/node_modules/gtts/lib/gTTS';
+const express = require("express");
+const ServerlessHttp = require("serverless-http")
+const cors = require('cors');
+const translate = require('google-translate-extended-api');
+const Gtts = require('gtts');
 
 const app = express();
 
