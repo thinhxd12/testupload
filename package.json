@@ -13,6 +13,9 @@
     "express": "^4.19.2",
     "netlify-cli": "^17.23.1",
     "netlify-lambda": "^2.0.16",
-    "serverless-http": "^3.2.0"
+    "serverless-http": "^3.2.0",
+    "cors": "^2.8.5",
+    "google-translate-extended-api": "^2.0.5",
+    "gtts": "^0.2.1"
   }
 }
