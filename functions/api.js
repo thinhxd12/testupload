@@ -12,11 +12,11 @@ const corsOptions = {
 
 
 
-// app.get('/.netlify/functions/api', (req, res) => {
-//     return res.json({
-//         messages: "hello world!"
-//     })
-// })
+app.get('/.netlify/functions/api', (req, res) => {
+    return res.json({
+        messages: "hello world!"
+    })
+})
 
 
 const translate = require('google-translate-extended-api');
