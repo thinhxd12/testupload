@@ -4,6 +4,6 @@
 
 [[redirects]]
     force = true
-    from = "/api/*"
+    from = "https://hoctuvung3.netlify.app/api/*"
     status = 200
-    to = "/.netlify/functions/api/:splat"
+    to = "https://hoctuvung3.netlify.app/.netlify/functions/api/:splat"
