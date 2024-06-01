@@ -4,6 +4,11 @@
 
 [[redirects]]
     force = true
-    from = "https://hoctuvung3.netlify.app/api/*"
+    from = "/api/*"
     status = 200
-    to = "https://hoctuvung3.netlify.app/.netlify/functions/api/:splat"
+    to = "/.netlify/functions/api/:splat"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    access-control-allow-origin = "*"
