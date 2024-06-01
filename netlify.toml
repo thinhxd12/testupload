@@ -1,12 +1,8 @@
-[build]
-  publish = "dist"
-  command = "npm run build"
-  edge_functions = ".netlify/edge-functions"
-  autoLaunch = false
-
-[[edge_functions]]
-  path = "/*"
-  function = "server"
-
 [functions]
+  external_node_modules = ["express"]
   node_bundler = "esbuild"
+[[redirects]]
+  force = true
+  from = "/api/*"
+  status = 200
+  to = "/.netlify/functions/api/:splat"
