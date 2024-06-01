@@ -27,13 +27,13 @@ const defaultTransOptions = {
     removeStyles: false
 }
 
-app.get('/api/trans', async (req, res) => {
+app.get('/api/trans', cors(corsOptions), async (req, res) => {
     const { text, from, to } = req.query;
     const result = await translate(text, from, to, defaultTransOptions);
     return res.json(result)
 })
 
-app.get('/api/hear', async (req, res) => {
+app.get('/api/hear', cors(corsOptions), async (req, res) => {
     const gtts = new Gtts(req.query.text, req.query.lang);
     gtts.stream().pipe(res);
 })
