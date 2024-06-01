@@ -34,7 +34,7 @@ app.get('/api/trans', cors(corsOptions), async (req, res) => {
 
 app.get('/api/hear', cors(corsOptions), async (req, res) => {
     const gtts = new Gtts(req.query.text, req.query.lang);
-    return gtts.stream().pipe(res);
+    gtts.stream().pipe(res);
 })
 
 
