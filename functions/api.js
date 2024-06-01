@@ -1,18 +1,11 @@
 import express from "express";
 import ServerlessHttp from "serverless-http";
-
-import cors from "cors"
 import Gtts from "gtts"
 import translate from "google-translate-extended-api"
 
 const app = express();
 
-const corsOptions = {
-    origin: ['http://localhost:3000', 'https://hoctuvung3.vercel.app/'],
-    optionsSuccessStatus: 200
-}
-
-app.get('/api/wakeup', cors(corsOptions), (req, res) => {
+app.get('/api/wakeup', (req, res) => {
     res.json({ res: 'it worked!' });
 })
 
@@ -27,13 +20,13 @@ const defaultTransOptions = {
     removeStyles: false
 }
 
-app.get('/api/trans', cors(corsOptions), async (req, res) => {
+app.get('/api/trans', async (req, res) => {
     const { text, from, to } = req.query;
     const result = await translate(text, from, to, defaultTransOptions);
     return res.json(result)
 })
 
-app.get('/api/hear', cors(corsOptions), async (req, res) => {
+app.get('/api/hear', async (req, res) => {
     const gtts = new Gtts(req.query.text, req.query.lang);
     gtts.stream().pipe(res);
 })
