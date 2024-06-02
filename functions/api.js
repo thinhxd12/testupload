@@ -44,6 +44,12 @@ app.get('/api/hear', cors(corsOptions), async (req, res) => {
 //     const result = await handler(event, context);
 //     return result;
 // }
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+});
+
 const serverless = require('serverless-http');
 module.exports.handler = serverless(app);
 
