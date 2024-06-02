@@ -1,5 +1,5 @@
 {
-  "name": "express-netlify",
+  "name": "vercelserver",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,14 +13,6 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "google-translate-extended-api": "^2.0.5",
-    "google-tts-api": "^2.0.2",
-    "gtts": "^0.2.1",
-    "netlify-cli": "^17.25.0",
-    "netlify-lambda": "^2.0.16",
-    "node-gtts": "^2.0.2",
-    "serverless-http": "^3.2.0"
-  },
-  "engines": {
-    "node": ">=14"
+    "node-gtts": "^2.0.2"
   }
 }
