@@ -1,12 +1,10 @@
 const express = require("express");
-const serverless = require("serverless-http")
+const ServerlessHttp = require("serverless-http")
 const cors = require('cors');
 const translate = require('google-translate-extended-api');
 const Gtts = require('gtts');
 
-// const app = express();
-const api = express();
-const app = Router();
+const app = express();
 
 const corsOptions = {
     origin: ['http://localhost:3000', 'https://hoctuvung3.vercel.app'],
@@ -39,8 +37,6 @@ app.get('/api/hear', cors(corsOptions), async (req, res) => {
     gtts.stream().pipe(res);
 })
 
-api.use("/api/", app);
-export const handler = serverless(api);
 
 // const handler = ServerlessHttp(app);
 
@@ -48,4 +44,7 @@ export const handler = serverless(api);
 //     const result = await handler(event, context);
 //     return result;
 // }
+const serverless = require('serverless-http');
+module.exports.handler = serverless(app);
+
 
