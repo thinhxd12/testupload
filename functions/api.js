@@ -7,7 +7,7 @@ const Gtts = require('gtts');
 const app = express();
 
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://hoctuvung3.vercel.app'],
+    origin: ['http://localhost:3000', 'http://localhost:5500', 'https://hoctuvung3.vercel.app'],
     optionsSuccessStatus: 200
 }
 
