@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require('cors');
 const translate = require('google-translate-extended-api');
 const Gtts = require('gtts');
+const googleTTS = require('google-tts-api');
 
 const app = express();
 const corsOptions = {
@@ -34,6 +35,16 @@ app.get('/hear', cors(corsOptions), function (req, res) {
 
 app.get('/wakeup', cors(corsOptions), function (req, res) {
     res.json({ res: "ok" });
+});
+
+app.get('/getsound', cors(corsOptions), function (req, res) {
+    const { text } = req.query;
+    const url = googleTTS.getAudioUrl(text, {
+        lang: 'vi',
+        slow: false,
+        host: 'https://translate.google.com',
+    });
+    res.json({ res: url });
 });
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
