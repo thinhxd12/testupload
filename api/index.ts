@@ -3,8 +3,18 @@ const cors = require('cors');
 const translate = require('google-translate-extended-api');
 const Gtts = require('gtts');
 const googleTTS = require('google-tts-api');
+const gtts = require('node-gtts')('vi')
+// var router = express.Router();
+
+
 
 const app = express();
+
+app.get('/speech', function (req, res) {
+    res.set({ 'Content-Type': 'audio/mpeg' });
+    gtts.stream(req.query.text).pipe(res);
+})
+
 const corsOptions = {
     origin: ['http://localhost:3000', 'http://localhost:5500', 'https://hoctuvung3.vercel.app'],
     optionsSuccessStatus: 200
