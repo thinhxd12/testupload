@@ -4,15 +4,14 @@ const cors = require('@fastify/cors');
 const corsOptions = {
   origin: 'https://hoctuvung3.vercel.app',
   methods: ['GET'],
-  credentials: "true",
 };
 
 const fastify = require('fastify')({
   logger: true
 })
 
-fastify.register(require('./app'))
-fastify.register(cors, corsOptions);
+// fastify.register(require('./app'))
+fastify.register(cors, corsOptions, require('./app'));
 
 fastify.listen({ port: 3000 }, function (err, address) {
   if (err) {
