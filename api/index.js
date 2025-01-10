@@ -4,6 +4,7 @@ const cors = require('@fastify/cors');
 const corsOptions = {
   origin: 'https://hoctuvung3.vercel.app',
   methods: ['GET'],
+  credentials: "true",
 };
 
 const fastify = require('fastify')({
