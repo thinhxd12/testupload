@@ -2,7 +2,7 @@ const cors = require('@fastify/cors');
 
 // CORS options
 const corsOptions = {
-  origin: ['https://hoctuvung3.vercel.app','https://vocabs1.vercel.app']
+  origin: 'https://vocabs1.vercel.app'
   methods: ['GET'],
 };
 
