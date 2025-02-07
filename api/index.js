@@ -5,7 +5,14 @@ const fastify = require('fastify')({
 })
 
 const corsOptions = {
-  origin: ['https://vocabs1.vercel.app', 'https://hoctuvung3.vercel.app']
+  origin: (origin, callback) => {
+    console.log('Request Origin:', origin); // Debug log
+    if (!origin || origin === 'https://vocabs1.vercel.app') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET']
 };
 
