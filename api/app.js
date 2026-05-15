@@ -1,5 +1,6 @@
 const translate = require('google-translate-extended-api');
-const gtts = require('node-gtts');
+const gtts = require('node-gtts')('vi');
+const gttsEn = require('node-gtts')('en');
 
 async function routes(fastify, options) {
     // Default translation options
@@ -33,12 +34,23 @@ async function routes(fastify, options) {
 
     // Speech route
     fastify.get('/speech', async (request, reply) => {
-        const { text, lang = 'en' } = request.query;
-        const gttInstance = gtts(lang);
+        const { text } = request.query;
         reply.header('Content-Type', 'audio/mpeg');
 
         try {
-            const stream = gttInstance.stream(text);
+            const stream = gtts.stream(text);
+            return reply.send(stream);
+        } catch (err) {
+            reply.status(500).send({ error: 'Speech generation failed', details: err.message });
+        }
+    });
+    
+    fastify.get('/tts', async (request, reply) => {
+        const { text } = request.query;
+        reply.header('Content-Type', 'audio/mpeg');
+
+        try {
+            const stream = gttsEn.stream(text);
             return reply.send(stream);
         } catch (err) {
             reply.status(500).send({ error: 'Speech generation failed', details: err.message });
