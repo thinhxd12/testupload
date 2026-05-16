@@ -5,7 +5,7 @@ const app = Fastify({
 })
 
 app.get('/', async (req, reply) => {
-  return reply.status(200).type('text/html').send({hello:"world"})
+  return reply.status(200).type('application/json').send({hello:"world"})
 })
 
 export default async function handler(req, reply) {
