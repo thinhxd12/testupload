@@ -1,5 +1,5 @@
 const translate = require('google-translate-extended-api');
-const gtts = require('node-gtts')('vi');
+const gtts = require('node-gtts')('en');
 
 async function routes(fastify, options) {
     // Default translation options
