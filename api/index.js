@@ -15,7 +15,19 @@ const defaultTransOptions = {
   removeStyles: false,
 };
 
-app.get("/", async (req, reply) => {
+const VALID_API_KEY = process.env.SCRAPER_SECRET_KEY;
+
+app.addHook("preHandler", async (request, reply) => {
+  if (request.url.startsWith("/hello")) return;
+
+  const apiKey = request.headers["x-api-key"];
+
+  if (!apiKey || apiKey !== VALID_API_KEY) {
+    reply.code(401).send({ error: "Unauthorized: Missing or invalid API Key" });
+  }
+});
+
+app.get("/hello", async (req, reply) => {
   return reply.status(200).type("application/json").send({ hello: "world" });
 });
 
