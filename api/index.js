@@ -18,7 +18,7 @@ const defaultTransOptions = {
 const VALID_API_KEY = process.env.SCRAPER_SECRET_KEY;
 
 app.addHook("preHandler", async (request, reply) => {
-  if (request.url.startsWith("/hello")) return;
+  if (request.url.startsWith("/public")) return;
 
   const apiKey = request.headers["x-api-key"];
 
@@ -41,7 +41,7 @@ app.get("/trans", async (req, reply) => {
   }
 });
 
-app.get("/speech", async (req, reply) => {
+app.get("/public/speech", async (req, reply) => {
   const { text, lang = "en" } = req.query;
   try {
     const stream = gtts(lang).stream(text);
