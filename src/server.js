@@ -8,10 +8,15 @@ fastify.get('/', async function handler (request, reply) {
   return { hello: 'world' }
 })
 
-// Run the server!
-try {
-  await fastify.listen({ port: 3000 })
-} catch (err) {
-  fastify.log.error(err)
-  process.exit(1)
+// 1. CRITICAL: Export the app instance for Vercel
+module.exports = fastify
+
+// 2. CRITICAL: Prevent local server from blocking Vercel build
+if (require.main === module) {
+  fastify.listen({ port: 3000 }, (err) => {
+    if (err) {
+      fastify.log.error(err)
+      process.exit(1)
+    }
+  })
 }
