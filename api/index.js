@@ -1,7 +1,9 @@
-const cors = require("@fastify/cors");
-const app = require("fastify")({
+import Fastify from 'fastify'
+import cors from '@fastify/cors'
+
+const app = Fastify({
   logger: true,
-});
+})
 
 const corsOptions = {
   origin: (origin, cb) => {
