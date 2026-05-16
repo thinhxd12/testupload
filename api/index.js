@@ -27,3 +27,5 @@ fastify.listen({ port: 3000 }, function (err, address) {
     process.exit(1)
   }
 })
+
+module.exports = fastify
