@@ -20,7 +20,7 @@ app.get("/", async (req, reply) => {
 });
 
 app.get("/trans", async (req, reply) => {
-  const { text, from, to } = req.query;
+  const { text, from = "auto", to = "vi" } = req.query;
   try {
     const result = await translate(text, from, to, defaultTransOptions);
     return reply.status(200).type("application/json").send(result);
