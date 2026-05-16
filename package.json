@@ -1,6 +1,5 @@
 {
   "name": "vercelserver",
-  "type": "module",
   "dependencies": {
     "fastify": "^5.8.5",
     "google-translate-extended-api": "^2.0.5",
